@@ -1,0 +1,244 @@
+/* Modern Pastel Theme for Photo Sharing Platform */
+
+:root {
+    --primary-color: #a5d8ff;       /* Light pastel blue */
+    --secondary-color: #ffd6e7;     /* Soft pink */
+    --accent-color: #c3fae8;        /* Mint green */
+    --light-bg: #f8f9fa;            /* Light background */
+    --dark-text: #495057;           /* Dark text color */
+    --light-text: #f8f9fa;          /* Light text color */
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-dark .navbar-brand, 
+.navbar-dark .nav-link {
+    color: var(--dark-text) !important;
+    font-weight: 500;
+}
+
+.navbar-dark .nav-link:hover {
+    color: #212529 !important;
+    text-decoration: underline;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: var(--dark-text);
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.container {
+    padding: 1.5rem;
+}
+
+.content-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.content-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+}
+
+.content-card .card-body {
+    padding: 1.5rem;
+}
+
+.content-card .card-title {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.content-card .card-text {
+    color: #6c757d;
+}
+
+.media-thumbnail {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: opacity 0.3s;
+}
+
+.media-thumbnail:hover {
+    opacity: 0.9;
+}
+
+.media-detail img, .media-detail video {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+}
+
+.comment-section {
+    margin-top: 30px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+}
+
+.comment {
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px 0;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.rating-section {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-text);
+}
+
+.btn-primary:hover {
+    background-color: #74c0fc;
+    border-color: #74c0fc;
+    color: var(--dark-text);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--dark-text);
+}
+
+.btn-secondary:hover {
+    background-color: #faa2c1;
+    border-color: #faa2c1;
+    color: var(--dark-text);
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+footer {
+    margin-top: 50px;
+    background-color: var(--secondary-color) !important;
+    color: var(--dark-text) !important;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Form styling */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(165, 216, 255, 0.25);
+}
+
+/* Badge styling */
+.badge {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+/* Star rating styling */
+.star-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+/* Search box styling */
+.search-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.search-form .input-group {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Hero section */
+.hero-section {
+    background-color: var(--secondary-color);
+    padding: 50px 0;
+    margin-bottom: 30px;
+    border-radius: 15px;
+}
+
+.hero-section h1 {
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+/* User role badges */
+.role-badge {
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.creator-badge {
+    background-color: var(--accent-color);
+    color: var(--dark-text);
+}
+
+.consumer-badge {
+    background-color: var(--secondary-color);
+    color: var(--dark-text);
+}
+
+/* Media metadata styling */
+.media-metadata {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.media-metadata p {
+    margin-bottom: 5px;
+}
+
+/* Page header styling */
+.page-header {
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}

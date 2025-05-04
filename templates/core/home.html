@@ -1,49 +1,67 @@
 {% extends 'base.html' %}
 
-{% block title %}Home | Video Sharing Platform{% endblock %}
+{% block title %}Home | PhotoShare{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-12 mb-4">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="display-4">Welcome to Video Sharing Platform</h1>
-                <p class="lead">Share your videos and photos with the world.</p>
-                {% if user.is_authenticated %}
-                    {% if user.is_creator %}
-                        <a href="/upload/" class="btn btn-primary">Upload Content</a>
-                    {% else %}
-                        <a href="#featured" class="btn btn-primary">Explore Content</a>
-                    {% endif %}
-                {% else %}
-                    <a href="{% url 'users:register' %}" class="btn btn-primary">Register Now</a>
-                    <a href="{% url 'users:login' %}" class="btn btn-outline-secondary ms-2">Login</a>
-                {% endif %}
+<div class="hero-section rounded-4 text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Share Your Beautiful Moments</h1>
+        <p class="lead mb-4">A modern platform to showcase your photos with friends and the world.</p>
+        {% if user.is_authenticated %}
+            {% if user.is_creator %}
+                <a href="/upload/" class="btn btn-primary btn-lg px-4 py-2">
+                    <i class="fas fa-cloud-upload-alt me-2"></i>Upload New Photo
+                </a>
+            {% else %}
+                <a href="#featured" class="btn btn-primary btn-lg px-4 py-2">
+                    <i class="fas fa-images me-2"></i>Explore Photos
+                </a>
+            {% endif %}
+        {% else %}
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{% url 'users:register' %}" class="btn btn-primary btn-lg px-4 py-2">
+                    <i class="fas fa-user-plus me-2"></i>Join Now
+                </a>
+                <a href="{% url 'users:login' %}" class="btn btn-secondary btn-lg px-4 py-2">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
             </div>
-        </div>
+        {% endif %}
     </div>
 </div>
 
-<div id="featured" class="row">
+<div id="featured" class="row mt-5">
     <div class="col-md-12">
-        <h2 class="mb-4">Featured Content</h2>
+        <h2 class="page-header fw-bold">
+            <i class="fas fa-star me-2"></i>Featured Photos
+        </h2>
     </div>
-    
-    {% if featured_media %}
+      {% if featured_media %}
         {% for item in featured_media %}
             <div class="col-md-4">
-                <div class="card content-card">
-                    {% if item.file.url|slice:"-3:" == 'mp4' %}
-                        <div class="position-relative">
+                <div class="card content-card h-100">
+                    <div class="position-relative">
+                        {% if item.file.url|slice:"-3:" == 'mp4' %}
                             <video class="media-thumbnail" controls>
                                 <source src="{{ item.file.url }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
-                            <span class="position-absolute top-0 end-0 badge bg-primary m-2">Video</span>
-                        </div>
-                    {% else %}
-                        <img src="{{ item.file.url }}" class="media-thumbnail" alt="{{ item.title }}">
-                    {% endif %}
+                            <span class="position-absolute top-0 end-0 badge bg-primary m-2">
+                                <i class="fas fa-video me-1"></i>Video
+                            </span>
+                        {% else %}
+                            <img src="{{ item.file.url }}" class="media-thumbnail" alt="{{ item.title }}">
+                            <span class="position-absolute top-0 end-0 badge bg-secondary m-2">
+                                <i class="fas fa-camera me-1"></i>Photo
+                            </span>
+                        {% endif %}
+                        
+                        {% if item.location %}
+                            <span class="position-absolute bottom-0 start-0 badge bg-dark bg-opacity-75 m-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>{{ item.location }}
+                            </span>
+                        {% endif %}
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">
@@ -71,21 +89,30 @@
 
 <div class="row mt-5">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <h2>How It Works</h2>
+        <div class="content-card">
+            <div class="card-body p-4">
+                <h2 class="text-center page-header fw-bold mb-4"><i class="fas fa-magic me-2"></i>How It Works</h2>
                 <div class="row mt-4">
-                    <div class="col-md-4 text-center">
-                        <h4>Create</h4>
-                        <p>Creators can upload videos and photos with detailed metadata.</p>
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                        <div class="p-3" style="background-color: var(--primary-color); border-radius: 15px;">
+                            <i class="fas fa-camera-retro fa-3x mb-3" style="color: var(--dark-text);"></i>
+                            <h4 class="fw-bold">Create</h4>
+                            <p>Creators can upload beautiful photos with detailed metadata like location and people.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                        <div class="p-3" style="background-color: var(--secondary-color); border-radius: 15px;">
+                            <i class="fas fa-share-alt fa-3x mb-3" style="color: var(--dark-text);"></i>
+                            <h4 class="fw-bold">Share</h4>
+                            <p>Your photos are securely stored and beautifully displayed for everyone to enjoy.</p>
+                        </div>
                     </div>
                     <div class="col-md-4 text-center">
-                        <h4>Share</h4>
-                        <p>Your content is securely stored and made available to viewers.</p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <h4>Engage</h4>
-                        <p>Viewers can comment, rate and interact with your content.</p>
+                        <div class="p-3" style="background-color: var(--accent-color); border-radius: 15px;">
+                            <i class="fas fa-comments fa-3x mb-3" style="color: var(--dark-text);"></i>
+                            <h4 class="fw-bold">Engage</h4>
+                            <p>Viewers can comment, rate and interact with your photos in a friendly community.</p>
+                        </div>
                     </div>
                 </div>
             </div>
