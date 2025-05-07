@@ -21,6 +21,7 @@ class MediaContent(models.Model):
     people_present = models.TextField(max_length=200, blank=True, null=True)
     upload_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    views = models.IntegerField(default=0)
     
     def __str__(self):
         return self.title
